@@ -18,7 +18,10 @@ CREATE TABLE Book (
 
 
 insert into book (bookno ,title,publisher,price)
-values ((select nvl(max(bookno),0)+1 from book)  ,'자바','한빛',900);
+values ((select nvl(max(bookno),0)+1 from book)  ,'�옄諛�','�븳鍮�',900);
+
+insert into book (bookno ,title,publisher,price)
+values ((select nvl(max(bookno),0)+1 from book)  ,'java','david',900);
 
 insert into book (bookno ,title,publisher,price)
 values (1 ,'java','kmove',900);
@@ -102,7 +105,7 @@ select rownum,ename,sal,hiredate
 from (select * from emp order by sal desc)
 where rownum<4;    // O
 
-##주의 
+##二쇱쓽 
 select rownum,ename,sal,hiredate
 from (select * from emp order by sal desc)
 where rownum>4;       // X
@@ -123,7 +126,7 @@ where rownum between 1 and 4;
 
 
 ##################################
-page 처리
+page 泥섎━
 ##################################
 
 select * from (
@@ -151,7 +154,7 @@ String sql="";
 sql="SELECT r, seq,title,contents,writer,time,viewcount " + 
 		"FROM(select rownum r, seq,title,contents,writer,time,viewcount " + 
 		"from(select * from board order by time desc)) " + 
-		"WHERE r>=? and r<=?";//인덱스 1번부터
+		"WHERE r>=? and r<=?";//�씤�뜳�뒪 1踰덈��꽣
 
 
 PreparedStatement st=con.prepareStatement(sql);

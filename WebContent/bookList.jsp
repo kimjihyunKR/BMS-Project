@@ -56,7 +56,9 @@
 			<c:forEach var="data" items="${bookList}">
 				<tr>
 					<td>${data.bookno}</td>
-					<td>${data.title}</td>
+					<td>
+						<a href="viewBook.do?bookno=${data.bookno}">${data.title}</a>
+					</td>
 					<td>${data.publisher}</td>
 					<td>${data.price}</td>
 					<td>

@@ -28,8 +28,8 @@ public class BookTest {
 //	@Test
 //	void add() {
 //		BookVO vo = new BookVO();
-//		vo.setTitle("jsp is fun");
-//		vo.setPublisher("kmove");
+//		vo.setTitle("nodejs");
+//		vo.setPublisher("mark");
 //		vo.setPrice(2000);
 //		
 //		service.bookAdd(vo);
@@ -52,14 +52,13 @@ public class BookTest {
 	
 //	@Test
 //	void update() {
-//		BookVO vo = service.getBook(14);
+//		BookVO vo = service.getBook(2);
 //		if(vo != null) {
 //			System.out.println(vo);
-//			vo.setPrice(3000);
+//			vo.setPrice(3300);
 //			service.bookUpdate(vo);
 //			System.out.println(service.getBook(vo.getBookno()));
-//		}
-//		
+//		}	
 //	}
 	
 //	@Test

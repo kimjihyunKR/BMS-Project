@@ -28,7 +28,7 @@
 			BookDAO_Mariadb dao = new BookDAO_Mariadb();
 			BookService service = new BookServiceImpl(dao);
 			List<BookVO> list = service.bookList();
-		for (BookVO data : list) {
+			for (BookVO data : list) {
 		%>
 		<tr>
 			<td><%=data.getBookno()%></td>

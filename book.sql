@@ -24,7 +24,7 @@ insert into book (bookno ,title,publisher,price)
 values ((select nvl(max(bookno),0)+1 from book)  ,'java','david',900);
 
 insert into book (bookno ,title,publisher,price)
-values (1 ,'java','kmove',900);
+values (2 ,'java','kmove',900);
 
 select * from book order by bookno desc
 

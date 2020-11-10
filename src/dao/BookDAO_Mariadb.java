@@ -74,7 +74,7 @@ public class BookDAO_Mariadb {
 
 	public void bookAdd(BookVO vo) {
 		String sql = "insert into book (title,publisher,price) values (?,?,?)";
-		//insert into book (title,publisher,price) values ('jsp','jihyun',900);
+		// insert into book (title,publisher,price) values ('jsp','jihyun',900);
 
 		// SQL 구문 처리하기
 		Connection con = null;
@@ -89,13 +89,13 @@ public class BookDAO_Mariadb {
 			ps.setString(1, vo.getTitle());
 			ps.setString(2, vo.getPublisher());
 			ps.setInt(3, vo.getPrice());
-			
+
 			// 실행
 			// ps.executeQuery();
 			row = ps.executeUpdate();
-			
-			if(row == 0) {
-			 	throw new Exception("등록실패");
+
+			if (row == 0) {
+				throw new Exception("등록실패");
 			}
 
 		} catch (Exception e) {
@@ -125,9 +125,8 @@ public class BookDAO_Mariadb {
 			// 실행
 			// ps.executeQuery();
 			ps.executeUpdate();
-			
-			//결과값 처리
-			
+
+			// 결과값 처리
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -153,14 +152,13 @@ public class BookDAO_Mariadb {
 			// ? 값 세팅
 			ps.setInt(1, vo.getPrice());
 			ps.setInt(2, vo.getBookno());
-			
+
 			// 실행
 			// ps.executeQuery();
 			ps.executeUpdate();
 
 		} catch (Exception e) {
 			e.printStackTrace();
-
 		} finally {
 			JDBCUtil.close(con, ps, rs); // 자원반납은 필수
 		}
@@ -180,29 +178,29 @@ public class BookDAO_Mariadb {
 			con = JDBCUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			// ? 값 세팅
-			ps.setString(1, "%"+keyword+"%");
+			ps.setString(1, "%" + keyword + "%");
 
 			// 실행
-			rs = ps.executeQuery(); //rs에 담아주기
-			
-			//결과값 처리
-			while(rs.next()) {
+			rs = ps.executeQuery(); // rs에 담아주기
+
+			// 결과값 처리
+			while (rs.next()) {
 				BookVO vo = new BookVO();
 				vo = new BookVO();
-				vo.setBookno(rs.getInt("bookno")); //rs에서 꺼내주기
+				vo.setBookno(rs.getInt("bookno")); // rs에서 꺼내주기
 				vo.setPrice(rs.getInt("price"));
 				vo.setTitle(rs.getString("title"));
 				vo.setPublisher(rs.getString("publisher"));
 				list.add(vo);
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 
 		} finally {
 			JDBCUtil.close(con, ps, rs); // 자원반납은 필수
 		}
-		
+
 		return list;
 	}
 
@@ -224,10 +222,10 @@ public class BookDAO_Mariadb {
 
 			// 실행
 			rs = ps.executeQuery();
-			
+
 			// 결과값 처리
-			while( rs.next() ) {
-				//데이터가 있다면
+			while (rs.next()) {
+				// 데이터가 있다면
 				vo = new BookVO();
 				vo.setBookno(rs.getInt("bookno"));
 				vo.setPrice(rs.getInt("price"));
@@ -241,7 +239,7 @@ public class BookDAO_Mariadb {
 		} finally {
 			JDBCUtil.close(con, ps, rs); // 자원반납은 필수
 		}
-		
+
 		return vo;
 
 	}

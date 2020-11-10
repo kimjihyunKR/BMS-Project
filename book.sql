@@ -1,3 +1,4 @@
+/* Oracle */
 drop table book;
 CREATE TABLE Book (
   bookno      NUMBER(4) PRIMARY KEY AUTO_INCREMENT,
@@ -14,8 +15,6 @@ CREATE TABLE Book (
   publisher   VARCHAR(40),
   price       INT
 );
-
-
 
 insert into book (bookno ,title,publisher,price)
 values ((select nvl(max(bookno),0)+1 from book)  ,'�옄諛�','�븳鍮�',900);

@@ -14,7 +14,7 @@ public class BookDAO_Mariadb {
 
 	public List<BookVO> bookList() {
 		List<BookVO> list = new ArrayList<BookVO>();
-		String sql = "select * from book order by bookno desc";
+		String sql = "select * from book order by bookno asc";
 
 		// db연동
 		Connection con = null;

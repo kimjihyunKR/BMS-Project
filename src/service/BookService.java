@@ -16,6 +16,6 @@ public interface BookService {
 	
 	BookVO getBook(int bookno);
 	
-	List<BookVO> searchBook(String conditon, String keyword);
+	List<BookVO> searchBook(String condition, String keyword);
 	
 }

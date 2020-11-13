@@ -19,7 +19,8 @@ public class JDBCUtil {
 		try {
 			// 상대경로가 아닌 절대경로로 하는 것이 안전하다.
 			// 서버에 올린경우 서버의 절대경로로 설정해주자.
-			p.load(new FileInputStream("C:/kmove-jh/lib/dbinfo.txt"));
+			//p.load(new FileInputStream("C:/kmove-jh/lib/dbinfo.txt"));
+			p.load(new FileInputStream("C:/k-move/lib/dbinfo.txt"));
 
 			String driver = p.getProperty("_driver");
 			String url = p.getProperty("_url");

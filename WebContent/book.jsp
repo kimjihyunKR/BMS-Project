@@ -1,19 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Book 등록</title>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 </head>
 <body>
-	<h2>Book 등록</h2>
-	<form action="addBook.do" method="POST">
-		제목: <input type="text" id="" name="title"> <br/>
-		출판사: <input type="text" id="" name="publisher"> <br/>
-		가격 : <input type="number" id="" name="price"> <br/>
-		
-		<button type="submit">등록</button>
-		<button type="reset">reset</button>
-	</form>
+	<h2>${title}</h2>
+		제목: ${title} <br/>
+		출판사: ${publisher} <br/>
+		가격 : ${price} <br/>
+		<button type="button">장바구니</button>
+		<button type="button">구매하기</button>
 </body>
 </html>

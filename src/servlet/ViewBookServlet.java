@@ -17,8 +17,7 @@ import vo.BookVO;
 public class ViewBookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void service(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html:charset=utf-8");
 
@@ -33,20 +32,11 @@ public class ViewBookServlet extends HttpServlet {
 			// 책 정보 가져오기
 			BookVO vo = service.getBook(bookno);
 			// 책 정보 넘겨주기
-			request.setAttribute("title", vo.getTitle());
-			request.setAttribute("publisher", vo.getPublisher());
-			request.setAttribute("price", vo.getPrice());
-		} else {
-			// 책 정보 넘겨주기
-			request.setAttribute("title", "none");
-			request.setAttribute("publisher", "none");
-			request.setAttribute("price", "none");
+			request.setAttribute("book", vo);
 		}
-
-		String page = "/book.jsp";
+		String page = "/bookView.jsp";
 		getServletContext().getRequestDispatcher(page). // 흐름처리
 				forward(request, response);
-
 	}
 
 }

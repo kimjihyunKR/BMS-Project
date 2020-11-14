@@ -1,13 +1,13 @@
 package test;
 
-import dao.UserDAO;
+import dao.UserDAO_Mariadb;
 import vo.UserVO;
 
 public class UserTexst01 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		UserDAO u =new UserDAO();
+		UserDAO_Mariadb u =new UserDAO_Mariadb();
 		
 		UserVO vo = new UserVO();
 		vo.setId("react");

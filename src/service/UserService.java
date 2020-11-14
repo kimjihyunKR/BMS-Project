@@ -18,4 +18,8 @@ public interface UserService {
 	
 	List<UserVO> searchUser(String condition, String keyword);
 	
+	UserVO login(String id, String password);
+	
+	UserVO login(UserVO vo);
+	
 }

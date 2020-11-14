@@ -9,7 +9,7 @@ import java.util.List;
 import util.JDBCUtil;
 import vo.UserVO;
 
-public class UserDAO {
+public class UserDAO_Mariadb {
 
 	// db에서 모든 user를 리스트 형태로 가져오기
 	public List<UserVO> userList() {
@@ -66,7 +66,7 @@ public class UserDAO {
 			if (row == 0) {
 				throw new Exception("등록실패");
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -108,14 +108,13 @@ public class UserDAO {
 			ps.setString(1, vo.getPassword());
 			ps.setString(2, vo.getName());
 			ps.setString(3, vo.getId());
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			JDBCUtil.close(con, ps, rs);
 		}
 	}
-
 
 	// db에 있는 user 정보 검색하기
 	public List<UserVO> userSearch(String condition, String keyword) {
@@ -182,4 +181,45 @@ public class UserDAO {
 
 		return vo;
 	}
+
+	// 로그인 처리 1
+	public UserVO login(String id, String password) {
+		String sql = "select * from user where id =? and password= ?";
+		
+		// SQL 구문 처리하기
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		UserVO vo = null;
+		
+		try {
+			con = JDBCUtil.getConnection();
+			ps = con.prepareStatement(sql);
+
+			ps.setString(1, id);
+			ps.setString(2, password);
+
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				vo = new UserVO();
+				vo.setId(rs.getString("id"));
+				vo.setPassword(rs.getString("password"));
+				vo.setName(rs.getString("name"));
+				vo.setRole(rs.getString("role"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(con, ps, rs);
+		}
+
+		return vo;
+	}
+	
+	// 로그인 처리 2
+	public UserVO login(UserVO vo) {
+		return login(vo.getId(), vo.getPassword());
+	}
+	
 }

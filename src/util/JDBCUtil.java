@@ -53,7 +53,7 @@ public class JDBCUtil {
 				con.close();
 
 		} catch (SQLException e) {
-
+			e.printStackTrace();
 		}
 	}
 }

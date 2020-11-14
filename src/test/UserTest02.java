@@ -3,7 +3,7 @@ package test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import dao.UserDAO;
+import dao.UserDAO_Mariadb;
 import service.UserService;
 import service.UserServiceImpl;
 import vo.UserVO;
@@ -13,7 +13,7 @@ public class UserTest02 {
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		UserDAO dao = new UserDAO();
+		UserDAO_Mariadb dao = new UserDAO_Mariadb();
 		service = new UserServiceImpl(dao);
 	}
 	

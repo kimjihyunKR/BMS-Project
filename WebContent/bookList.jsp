@@ -4,9 +4,10 @@
 <head>
 <meta charset="UTF-8">
 <title>My Home</title>
-<link rel="stylesheet" href="./css/my.css">
 
+<link rel="stylesheet" href="./css/my.css">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <script>
 	function f1() {
 		return confirm("진심임?");
@@ -14,6 +15,7 @@
 </script>
 </head>
 <body>
+	<%@ include file="common/header.jsp"%>
 	<h1>Book List</h1>
 	<hr>
 	<form action="${pageContext.request.contextPath}/bookSearch.do" method="POST">
@@ -69,7 +71,7 @@
 		</table>
 	</form>
 
-
+	<%@ include file="common/footer.jsp"%>
 </body>
 </html>
 

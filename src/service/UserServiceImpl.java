@@ -2,20 +2,23 @@ package service;
 
 import java.util.List;
 
-import dao.UserDAO;
+import dao.UserDAO_Mariadb;
 import vo.UserVO;
 
 public class UserServiceImpl implements UserService {
 	
-	private UserDAO dao = null;
+	// dao 주소가 기입되어야 돌아간다
+	private UserDAO_Mariadb dao = null;
 	
-	public UserServiceImpl() {}
+	public UserServiceImpl() {
+		super();
+	}
 	
-	public UserServiceImpl(UserDAO dao) {
+	public UserServiceImpl(UserDAO_Mariadb dao) {
 		this.dao = dao;
 	}
 	
-	public UserDAO getDao() {
+	public UserDAO_Mariadb getDao() {
 		return dao;
 	}
 	
@@ -47,6 +50,16 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<UserVO> searchUser(String condition, String keyword) {
 		return dao.userSearch(condition, keyword);
+	}
+
+	@Override
+	public UserVO login(String id, String password) {
+		return dao.login(id, password);
+	}
+
+	@Override
+	public UserVO login(UserVO vo) {
+		return dao.login(vo);
 	}
 
 }

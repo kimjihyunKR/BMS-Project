@@ -20,7 +20,7 @@
 		<table>
 			<tr>
 				<td>
-					<a href="book.jsp">등록</a>
+					<a href="bookAdd.jsp">등록</a>
 				</td>
 				<td>
 					<select name="condition">

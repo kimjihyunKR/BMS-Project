@@ -6,9 +6,8 @@
                 
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
                 
-        <property name="context-root" value="web01"/>
-                
         <property name="java-output-path" value="/web01/build/classes"/>
+        <property name="context-root" value="bookApp"/>
             
     </wb-module>
     

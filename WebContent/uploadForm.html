@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>File Upload</title>
+<link rel="stylesheet" href="./css/my.css">
+<link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+	<h2>File Upload</h2>
+	<form action="upload1.do" method="POST" enctype="multipart/form-data">
+		<label>첨부파일 : <input type="file" name="img" multiple="multiple" /></label> <br>
+		<button type="submit">submit</button>
+		<button type="reset">reset</button>
+	</form>
+
+	<form action="upload2.do" method="POST" enctype="multipart/form-data">
+		<label>첨부파일 : <input type="file" name="img" multiple="multiple" /></label> <br>
+		<button type="submit">submit</button>
+		<button type="reset">reset</button>
+	</form>
+</body>
+</html>

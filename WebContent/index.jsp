@@ -22,8 +22,8 @@
 				<li><a href="${pageContext.request.contextPath}/logout.do">Logout [${login.id}]</a><br /></li>
 				<li><a href="${pageContext.request.contextPath}/bookList.do">Book List</a><br /></li>
 				<li><a href="${pageContext.request.contextPath}/bookAdd.jsp">Book Add</a><br /></li>
-				<li><a href="${pageContext.request.contextPath}/">menu1</a><br /></li>
-				<li><a href="${pageContext.request.contextPath}/">menu2</a><br /></li>
+				<li><a href="${pageContext.request.contextPath}/">Map</a><br /></li>
+				<li><a href="${pageContext.request.contextPath}/uploadForm.html">upload</a><br /></li>
 			</c:if>
 		</ul>
 	</section>

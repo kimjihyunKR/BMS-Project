@@ -15,9 +15,9 @@
 			<li><a href="login.jsp"> LogIn </a></li>
 			<br>
 		</c:if>
-
 		<c:if test="${!empty login }">
-			<li><a href="logout.do"> LogOut </a></li>
+			<li><a href="logout.do">LogOut</a></li>
+			<li><a href="#"> [${login.id}] </a></li>
 			<br>
 		</c:if>
 	</ul>

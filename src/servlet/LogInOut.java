@@ -26,7 +26,7 @@ public class LogInOut extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		
-		if( session != null) {
+		if( session != null ) {
 			session.invalidate();
 		}
 		response.sendRedirect("/index.jsp");
@@ -56,6 +56,7 @@ public class LogInOut extends HttpServlet {
 
 		} else {
 			// 로그인 실패
+			// forwarding 서버단의 기억공간을 쉐어하기 위해서
 			request.setAttribute("msg", "로그인 실패! 로그인 정보를 다시 입력하세요");
 			getServletContext().getRequestDispatcher("/login.jsp"). // 흐름처리
 					forward(request, response);

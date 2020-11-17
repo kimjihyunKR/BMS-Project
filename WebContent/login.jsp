@@ -12,19 +12,27 @@
 <body>
 	<%@ include file="common/header.jsp"%>
 	<section>
+		<h2>Login</h2>
+		<c:if test="${empty msg }">
+			<h3>로그인해주세요</h3>
+		</c:if>
+		<c:if test="${!empty msg }">
+			<h3 style="color:#ff0000">${msg}</h3>
+		</c:if>
+
 		<form action="login.do" method="post">
 			<table>
 				<tr>
 					<td>ID</td>
 					<td>
-						<input type="text" name="id" required="required">
+						<input type="text" name="id" required="required" >
 					</td>
 				</tr>
 
 				<tr>
 					<td>PW</td>
 					<td>
-						<input type="password" name="password" required="required">
+						<input type="password" name="password" required="required" >
 					</td>
 				</tr>
 

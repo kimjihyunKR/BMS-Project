@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Book:${book.title} Edit</title>
 <link rel="stylesheet" href="./css/my.css">
+<link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
 	<%@ include file="common/header.jsp"%>
@@ -37,7 +38,12 @@
 
 			<tr>
 				<td colspan="3">
-					<img src="./img/book1.png" width="200" height="200" />
+					<c:if test="${empty book.img}">
+						<img src="./img/empty.jpg" width="200" height="200" />
+					</c:if>
+					<c:if test="${!empty book.img}">
+						<img src="./upload/${book.img}" width="200" height="200" />
+					</c:if>
 				</td>
 			</tr>
 

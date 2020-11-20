@@ -9,7 +9,7 @@ table {
 	width: 70%;
 	text-align: center;
 	border-collapse: collapse;
-	margin: 0 auto;
+	margin: 10px auto;
 }
 
 table, tr, td, th {

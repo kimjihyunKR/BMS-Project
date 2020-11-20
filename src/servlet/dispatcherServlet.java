@@ -1,14 +1,17 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 import dao.BookDAO_Mariadb;
 import dao.UserDAO_Mariadb;
@@ -20,6 +23,7 @@ import vo.BookVO;
 import vo.UserVO;
 
 @WebServlet("*.do")
+@MultipartConfig(maxFileSize = 1024*1024*5)
 public class dispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -30,8 +34,7 @@ public class dispatcherServlet extends HttpServlet {
 
 		String url = request.getRequestURI();
 		String action = url.substring(url.lastIndexOf("/"));
-		//log파일에 기록하기
-		
+		// log파일에 기록하기
 
 		BookDAO_Mariadb daoB = new BookDAO_Mariadb();
 		BookService serviceB = new BookServiceImpl(daoB);
@@ -102,11 +105,28 @@ public class dispatcherServlet extends HttpServlet {
 			String title = request.getParameter("title");
 			String publisher = request.getParameter("publisher");
 			int price = Integer.parseInt(request.getParameter("price"));
+			String fileName = null;
+			// upload file path
+			String path = request.getSession().getServletContext().getRealPath("/upload/");
+			// 업로드한 파일 받아오기
+			Collection<Part> p = request.getParts();
+
+			for (Part data : p) {
+				if (data.getContentType() != null) {
+					fileName = data.getSubmittedFileName();
+					System.out.println(fileName);
+					if (fileName != null && fileName.length() != 0) {
+						data.write(path + fileName);
+					}
+				}
+			}
+			
 			// vo에 담아주기
 			BookVO vo = new BookVO();
 			vo.setTitle(title);
 			vo.setPublisher(publisher);
 			vo.setPrice(price);
+			vo.setImg(fileName);
 			// db에 등록하기
 			serviceB.bookAdd(vo);
 
@@ -116,7 +136,7 @@ public class dispatcherServlet extends HttpServlet {
 		}
 
 		if (action.equals("/bookDelete.do")) {
-			
+
 			String[] bookno = request.getParameterValues("bookno");
 
 			if (bookno != null) {
@@ -153,7 +173,6 @@ public class dispatcherServlet extends HttpServlet {
 			String req = request.getParameter("bookno");
 			if (req != null) {
 				int bookno = Integer.parseInt(req);
-
 				// 책 정보 가져오기
 				BookVO vo = serviceB.getBook(bookno);
 				// 책 정보 넘겨주기

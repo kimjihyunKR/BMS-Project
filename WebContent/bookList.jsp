@@ -4,8 +4,9 @@
 <head>
 <meta charset="UTF-8">
 <title>My Home</title>
-
 <link rel="stylesheet" href="./css/my.css">
+<link rel="stylesheet" href="./css/main.css">
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <script>

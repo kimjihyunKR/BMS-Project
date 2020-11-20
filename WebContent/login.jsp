@@ -6,6 +6,7 @@
 <title>Login</title>
 
 <link rel="stylesheet" href="./css/my.css">
+<link rel="stylesheet" href="./css/main.css">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 </head>

@@ -32,6 +32,7 @@ public class BookDAO_Mariadb {
 				vo.setPrice(rs.getInt("price"));
 				vo.setPublisher(rs.getString("publisher"));
 				vo.setTitle(rs.getString("title"));
+				//리스트 뷰에서 이미지 뿌리지 x
 				list.add(vo);
 			}
 
@@ -44,36 +45,8 @@ public class BookDAO_Mariadb {
 		return list;
 	}
 
-	public int insertBookList() {
-		String sql = "insert into book (bookno ,title,publisher,price) " + "values ('title', 'publisher', 900)";
-
-		// SQL 구문 처리하기
-		Connection con = null;
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		int row = 0;
-
-		try {
-			con = JDBCUtil.getConnection();
-			ps = con.prepareStatement(sql);
-			// ? 값 세팅
-
-			// 실행
-			// ps.executeQuery();
-			// ps.executeUpdate();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-
-		} finally {
-			JDBCUtil.close(con, ps, rs); // 자원반납은 필수
-		}
-
-		return row;
-	}
-
 	public void bookAdd(BookVO vo) {
-		String sql = "insert into book (title,publisher,price) values (?,?,?)";
+		String sql = "insert into book (title,publisher,price, img) values (?,?,?,?)";
 		// insert into book (title,publisher,price) values ('jsp','jihyun',900);
 
 		// SQL 구문 처리하기
@@ -89,9 +62,9 @@ public class BookDAO_Mariadb {
 			ps.setString(1, vo.getTitle());
 			ps.setString(2, vo.getPublisher());
 			ps.setInt(3, vo.getPrice());
+			ps.setString(4, vo.getImg());
 
 			// 실행
-			// ps.executeQuery();
 			row = ps.executeUpdate();
 
 			if (row == 0) {
@@ -231,6 +204,7 @@ public class BookDAO_Mariadb {
 				vo.setPrice(rs.getInt("price"));
 				vo.setTitle(rs.getString("title"));
 				vo.setPublisher(rs.getString("publisher"));
+				vo.setImg(rs.getString("img"));
 			}
 
 		} catch (Exception e) {

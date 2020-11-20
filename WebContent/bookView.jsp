@@ -49,7 +49,7 @@
 
 			<tr>
 				<td>
-					<button type="button" id="bookEdit">수정</button>
+					<button type="button" id="bookModify">수정</button>
 				</td>
 				<td>
 					<button type="button" id="bookDelete">삭제</button>
@@ -64,9 +64,9 @@
 
 	<script>
 	//Edit
-	 document.getElementById("bookEdit").addEventListener('click', (e)=>{
-		 //f.action = "bookDelete.do";
-		 //f.submit();
+	 document.getElementById("bookModify").addEventListener('click', (e)=>{
+		 f.action = "bookModify.do";
+		 f.submit();
 	 });
 	
 	 //Delete

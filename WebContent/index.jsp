@@ -23,7 +23,6 @@
 				<li><a href="${pageContext.request.contextPath}/bookList.do">Book List</a><br /></li>
 				<li><a href="${pageContext.request.contextPath}/bookAdd.jsp">Book Add</a><br /></li>
 				<li><a href="${pageContext.request.contextPath}/">Map</a><br /></li>
-				<li><a href="${pageContext.request.contextPath}/uploadForm.html">upload</a><br /></li>
 			</c:if>
 		</ul>
 	</section>

@@ -111,7 +111,7 @@ public class BookDAO_Mariadb {
 	}
 
 	public void bookUpdate(BookVO vo) {
-		String sql = "update book set price = ? where bookno = ? "; // ?로 바인딩 보안상 좋음
+		String sql = "update book set title = ? , publisher=?, price = ? where bookno = ? "; // ?로 바인딩 보안상 좋음
 
 		// SQL 구문 처리하기
 		Connection con = null;
@@ -123,8 +123,10 @@ public class BookDAO_Mariadb {
 			con = JDBCUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			// ? 값 세팅
-			ps.setInt(1, vo.getPrice());
-			ps.setInt(2, vo.getBookno());
+			ps.setString(1, vo.getTitle() );
+			ps.setString(2, vo.getPublisher());
+			ps.setInt(3, vo.getPrice());
+			ps.setInt(4, vo.getBookno());
 
 			// 실행
 			// ps.executeQuery();

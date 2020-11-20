@@ -23,7 +23,7 @@ import vo.BookVO;
 import vo.UserVO;
 
 @WebServlet("*.do")
-@MultipartConfig(maxFileSize = 1024*1024*5)
+@MultipartConfig(maxFileSize = 1024 * 1024 * 5)
 public class dispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -109,7 +109,7 @@ public class dispatcherServlet extends HttpServlet {
 			// upload file path
 			String path = request.getSession().getServletContext().getRealPath("/upload/");
 			// 업로드한 파일 받아오기
-			Collection<Part> p = request.getParts();
+			Collection<Part> p = request.getParts(); // file의 데이터 타입
 
 			for (Part data : p) {
 				if (data.getContentType() != null) {
@@ -120,7 +120,7 @@ public class dispatcherServlet extends HttpServlet {
 					}
 				}
 			}
-			
+
 			// vo에 담아주기
 			BookVO vo = new BookVO();
 			vo.setTitle(title);
@@ -145,6 +145,34 @@ public class dispatcherServlet extends HttpServlet {
 				}
 			}
 
+			response.sendRedirect("bookList.do");
+			return;
+		}
+		
+		if (action.equals("/bookModify.do")) {
+			String req = request.getParameter("bookno");
+			if (req != null) {
+				int bookno = Integer.parseInt(req);// 책 정보 가져오기
+				BookVO vo = serviceB.getBook(bookno);
+				// 책 정보 넘겨주기
+				request.setAttribute("book", vo);
+			}
+			String page = "/bookAdd.jsp";
+			getServletContext().getRequestDispatcher(page). // 흐름처리
+					forward(request, response);
+			return;
+		}
+		
+		if (action.equals("/bookUpdate.do")) {
+			int bookno = Integer.parseInt(request.getParameter("bookno"));
+			String title = request.getParameter("title");
+			String publisher = request.getParameter("publisher");
+			int price = Integer.parseInt(request.getParameter("price"));
+			//이미지 수정하기
+			//vo수정하기
+			BookVO vo = serviceB.getBook(bookno); 
+			serviceB.bookUpdate(vo);
+			
 			response.sendRedirect("bookList.do");
 			return;
 		}

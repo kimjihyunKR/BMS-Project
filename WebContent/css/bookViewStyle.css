@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+.book-info {
+	flex: 2;
+}
+
+#img-box {
+	background-position: center center;
+	background-size: 50% auto;
+	background-repeat: no-repeat;
+	background-clip: content-box;
+	background-color: #eeeeee;
+}
+.row {
+	position: relative;	
+}
+.book-info {
+	position : absolute;
+	right : 15px;
+	bottom : 0;
+}
+
+.book-price::after {
+	content: 'won';
+	display: inline;
+	margin-left:1rem;
+}
+

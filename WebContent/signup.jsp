@@ -16,15 +16,9 @@
 	<%@ include file="common/header.jsp"%>
 	<div class="container">
 		<section>
-			<h2>Login</h2>
-			<c:if test="${empty msg}">
-				<h4>please login BMS</h4>
-			</c:if>
-			<c:if test="${!empty msg }">
-				<h3 class="msg-error">${msg}</h3>
-			</c:if>
-
-			<form action="login.do" method="post">
+			<h2>Sign Up</h2>
+			<p></p>
+			<form action="signup.do" method="post">
 				<dl>
 					<dt>ID</dt>
 					<dd>
@@ -35,20 +29,20 @@
 					<dd>
 						<input type="password" name="password" required="required">
 					</dd>
+					
+					<dt>Name</dt>
+					<dd>
+						<input type="text" name="name" required="required">
+					</dd>
+					
 				</dl>
 				<div class="btn-box">
-					<button type="submit">Login</button>
-					<button type="button" id="btn-singup">sign up</button>
+					<button type="reset">reset</button>
+					<button type="submit" id="btn-singup">sign up</button>
 				</div>
 			</form>
 		</section>
-
 	</div>
 	<%@ include file="common/footer.jsp"%>
-	<script>
-	 document.getElementById("btn-singup").addEventListener('click', (e)=>{
-		 location.href="signup.jsp";
-	 });
-	</script>
 </body>
 </html>

@@ -12,6 +12,7 @@
 </head>
 <body>
 	<%@ include file="common/header.jsp"%>
+	<div class="container">
 	<section>
 		<h3>link list</h3>
 		<ul>
@@ -26,6 +27,8 @@
 			</c:if>
 		</ul>
 	</section>
+	</div>
+	
 	<%@ include file="common/footer.jsp"%>
 </body>
 </html>

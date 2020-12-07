@@ -1,51 +1,68 @@
 @charset "UTF-8";
 
-h1, h2, h3, h4 {
-	text-align: center;
-	font-family: cursive;
+* {
+	font-family: 'Poppins', sans-serif;
+	margin : 0;
+	padding : 0;
+	box-sizing: border-box;
 }
 
+*::selection {
+  background-color: #000000;
+  color: #fff;
+}
+
+.center {
+	margin : 0 auto;
+}
+
+
+/* table style */
 table {
-	width: 70%;
+	width: 100%;
 	text-align: center;
 	border-collapse: collapse;
-	margin: 10px auto;
+	margin: 0 auto;
 }
 
-table, tr, td, th {
-	border: 1px solid blue;
+th {
+	margin-bottom : 6px;
 }
 
-th, td {
+td {
+	border: 1px solid #000000;
+}
+
+th {
 	font-weight: bold;
 }
 
-tr:hover {
-	background-color: graytext;
-	font-size: 100%;
+tbody > tr:hover {
+	background-color: #000000;
+	color : #ffffff;
+	border : #ffffff;
 }
 
-.tablea tr:nth-child(2n+1) {
-	background-color: gray;
-}
 
-.tableb tr:nth-child(2n) {
-	background-color: silver;
-}
 
+/* nav bar style */
+nav {
+	border-bottom: 1px solid #000000;
+}
 nav ul {
 	list-style: none;
-	text-align: center;
-	border-top: 1px solid red;
-	border-bottom: 1px solid red;
-	padding: 10px 0;
-	letter-spacing: 10px;
+}
+
+#logo {
+	display : inline;
+	margin : 0;
 }
 
 nav ul li {
 	display: inline;
 	text-transform: uppercase;
-	padding: 10px;
+	font-size: 0.8rem;
+	padding: 3px;
 }
 
 nav ul li a {
@@ -54,12 +71,50 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-	text-decoration: underline;
+	text-decoration: none;
+	background-color: #000000;
+	color : #ffffff;
 }
 
-.bookThumnail {
-	display : block;
-	width :100px;
-	height : 150px;
-	backgroud-color : #ff80c0;
+/* search box */
+.search-box {
+	display : flex;
+	justify-content: center;
+	margin-top : 50px;
 }
+
+.search-box > * {
+	margin: 0 0.5rem;
+}
+
+/* button style */
+.btn-box {
+	margin : 12px 0 ;
+}
+
+button {
+	font-size : 0.8rem;
+	background : none;
+	border : 1px solid black;
+	line : none;
+	padding : 0.5rem 1rem;
+}
+button:hover {
+	background-color: black;
+	color : #ffffff;
+}
+
+/* input style */
+dl > dd {
+	margin: 0;
+}
+
+dl > dt {
+	margin-top : 12px;
+}
+
+input {
+	padding : 0.3rem;
+	
+}
+

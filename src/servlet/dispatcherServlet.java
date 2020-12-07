@@ -71,10 +71,27 @@ public class dispatcherServlet extends HttpServlet {
 			if (session != null) {
 				session.invalidate();
 			}
-			response.sendRedirect("/index.jsp");
+			response.sendRedirect(request.getContextPath()+"/index.jsp");
 			return;
 		}
 
+		// 회원 가입
+		if (action.equals("/signup.do")) {
+			String id = request.getParameter("id");
+			String pw = request.getParameter("password");
+			String name = request.getParameter("name");
+			
+			UserVO newbie = new UserVO();
+			newbie.setId(id);
+			newbie.setPassword(pw);
+			newbie.setName(name);
+			serviceU.userAdd(newbie);
+			// login 화면으로 넘어가기
+			response.sendRedirect("login.jsp");
+			return;
+		}
+		
+		// 책 리스트 보여주기
 		if (action.equals("/bookList.do")) {
 			// 로그인했는지 판단
 			HttpSession session = request.getSession();

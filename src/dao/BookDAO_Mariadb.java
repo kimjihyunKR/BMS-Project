@@ -13,6 +13,7 @@ import vo.BookVO;
 public class BookDAO_Mariadb {
 
 	public List<BookVO> bookList() {
+		//default 정렬
 		List<BookVO> list = new ArrayList<BookVO>();
 		String sql = "select * from book order by bookno asc";
 
@@ -32,6 +33,8 @@ public class BookDAO_Mariadb {
 				vo.setPrice(rs.getInt("price"));
 				vo.setPublisher(rs.getString("publisher"));
 				vo.setTitle(rs.getString("title"));
+				vo.setImg(rs.getString("img"));
+				vo.setDetail(rs.getString("detail"));
 				//리스트 뷰에서 이미지 뿌리지 x
 				list.add(vo);
 			}
@@ -46,8 +49,7 @@ public class BookDAO_Mariadb {
 	}
 
 	public void bookAdd(BookVO vo) {
-		String sql = "insert into book (title,publisher,price, img) values (?,?,?,?)";
-		// insert into book (title,publisher,price) values ('jsp','jihyun',900);
+		String sql = "insert into book (title,publisher,price, img, detail) values (?,?,?,?,?)";
 
 		// SQL 구문 처리하기
 		Connection con = null;
@@ -63,6 +65,7 @@ public class BookDAO_Mariadb {
 			ps.setString(2, vo.getPublisher());
 			ps.setInt(3, vo.getPrice());
 			ps.setString(4, vo.getImg());
+			ps.setString(5, vo.getDetail());
 
 			// 실행
 			row = ps.executeUpdate();
@@ -111,7 +114,7 @@ public class BookDAO_Mariadb {
 	}
 
 	public void bookUpdate(BookVO vo) {
-		String sql = "update book set title = ? , publisher=?, price = ? where bookno = ? "; // ?로 바인딩 보안상 좋음
+		String sql = "UPDATE book SET title = ? , publisher=?, price = ? , img =? , detail=? WHERE bookno = ? "; // ?로 바인딩 보안상 좋음
 
 		// SQL 구문 처리하기
 		Connection con = null;
@@ -126,10 +129,10 @@ public class BookDAO_Mariadb {
 			ps.setString(1, vo.getTitle() );
 			ps.setString(2, vo.getPublisher());
 			ps.setInt(3, vo.getPrice());
-			ps.setInt(4, vo.getBookno());
+			ps.setString(4, vo.getImg());
+			ps.setString(5, vo.getDetail());
+			ps.setInt(6, vo.getBookno());
 
-			// 실행
-			// ps.executeQuery();
 			ps.executeUpdate();
 
 		} catch (Exception e) {
@@ -162,10 +165,12 @@ public class BookDAO_Mariadb {
 			while (rs.next()) {
 				BookVO vo = new BookVO();
 				vo = new BookVO();
-				vo.setBookno(rs.getInt("bookno")); // rs에서 꺼내주기
+				vo.setBookno(rs.getInt("bookno"));
 				vo.setPrice(rs.getInt("price"));
-				vo.setTitle(rs.getString("title"));
 				vo.setPublisher(rs.getString("publisher"));
+				vo.setTitle(rs.getString("title"));
+				vo.setImg(rs.getString("img"));
+				vo.setDetail(rs.getString("detail"));
 				list.add(vo);
 			}
 
@@ -204,9 +209,10 @@ public class BookDAO_Mariadb {
 				vo = new BookVO();
 				vo.setBookno(rs.getInt("bookno"));
 				vo.setPrice(rs.getInt("price"));
-				vo.setTitle(rs.getString("title"));
 				vo.setPublisher(rs.getString("publisher"));
+				vo.setTitle(rs.getString("title"));
 				vo.setImg(rs.getString("img"));
+				vo.setDetail(rs.getString("detail"));
 			}
 
 		} catch (Exception e) {

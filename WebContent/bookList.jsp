@@ -1,76 +1,56 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>My Home</title>
-<link rel="stylesheet" href="./css/my.css">
-<link rel="stylesheet" href="./css/main.css">
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="./common/top.jsp"%>
+<title>My Home</title>
 </head>
 <body>
 	<%@ include file="common/header.jsp"%>
 	<div class="container">
 
-		<form action="${pageContext.request.contextPath}/bookSearch.do"
-			method="POST">
-			<div class="search-box">
-				<button type="button" id="goAddPage">add</button>
-				<select name="condition">
-					<option value="title">title</option>
-					<option value="publisher">publisher</option>
-				</select> <input type="text" name="keyword">
-				<button type="submit">search</button>
+		<form action="${pageContext.request.contextPath}/searchBook.do" method="POST" class="col-8 mx-auto mt-5">
+			<div class="row g-3">
+				<div class="col-md-3">
+					<select name="condition" class="form-select form-select ">
+						<option value="title">title</option>
+						<option value="publisher">publisher</option>
+					</select> 
+				</div>
+				<div class="col-md-9">
+					<div class="input-group">
+						<input type="text" name="keyword" class=" form-control " placeholder="검색어를 입력하세요">
+						<button type="submit" class="btn btn-outline-primary" >search</button>
+					</div>
+				</div>
 			</div>
 		</form>
+		
+		<hr class="m-5">
+		
 		<section>
-			<form action="bookDelete.do" method="GET">
-				<table>
-					<thead>
-						<tr>
-							<th>id</th>
-							<th>title</th>
-							<th>publisher</th>
-							<th>price</th>
-							<th>
-								<button type="submit" id="delete-btn" onclick="return f1()">삭제</button>
-							</th>
-						</tr>
-					</thead>
+			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 g-4">
+				<c:forEach var="data" items="${bookList}">
+					<div class="col">
+						<a href="viewBook.do?bookno=${data.bookno}" class="reset-a">
+							<div class="card h-100">
+								<img src="./upload/${data.img}" class="card-img-top" alt="${data.title} cover image" >
+								<div class="card-body">
+									<h5 class="card-title">${data.title}</h5>
+									<p class="card-text">
+										<span>writer</span><br> 
+										<span>${data.publisher}</span><br> 
+										<span>${data.price}</span>
+									</p>
+								</div>
+							</div>
+						</a>
 
-					<c:forEach var="data" items="${bookList}">
-						<tr>
-							<td>${data.bookno}</td>
-							<td><a href="viewBook.do?bookno=${data.bookno}">${data.title}</a>
-							</td>
-							<td>${data.publisher}</td>
-							<td>${data.price}</td>
-							<td><input type="checkbox" name="bookno"
-								value="${data.bookno}"></td>
-						</tr>
-					</c:forEach>
-				</table>
-			</form>
+					</div>
+				</c:forEach>
+			</div>
 		</section>
 
 
 	</div>
 	<%@ include file="common/footer.jsp"%>
 
-	<script>
-	function f1() {
-		return confirm("진심임?");
-	}
-	
-	document.getElementById("goAddPage").addEventListener('click', (e)=>{
-		location.href="bookAdd.jsp";
-	 });
-	
-	
-	</script>
-</body>
-</html>
-
-
+	<%@ include file="./common/bottom.jsp"%>

@@ -18,10 +18,10 @@ public class BookTest {
 	
 	@Test
 	void list() {
-		System.out.printf("%5s |%15s |%10s |%10s\n", "id", "제목", "저자", "가격" );
+		System.out.printf("%5s |%30s |%10s |%10s |%30s\n", "id", "제목", "저자", "가격" , "이미지" );
 		System.out.println("-------------------------------------------------");
 		service.bookList().forEach(   i -> { 
-			System.out.printf("%5d |%15s |%10s |%10d\n", i.getBookno(), i.getTitle(), i.getPublisher(), i.getPrice());
+			System.out.printf("%5d |%30s |%10s |%10d |%30s\n", i.getBookno(), i.getTitle(), i.getPublisher(), i.getPrice(), i.getImg());
 		});
 	}
 	

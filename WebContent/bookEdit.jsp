@@ -53,7 +53,7 @@
 				<div class="mb-3">
   					<label for="bookInfoLabel" class="form-label text-primary">상세설명</label>
   					
-  					<textarea name="detail" id="bookInfoLabel" rows="5" class="form-control" value="">${book.detail}</textarea>
+  					<textarea name="detail" id="bookInfoLabel" rows="10" class="form-control" value="">${book.detail}</textarea>
 				</div>
 
 				<div class="row gap-3 col-4 margin-col-2" id="btn-box">
